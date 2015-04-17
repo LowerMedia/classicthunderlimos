@@ -1,5 +1,5 @@
 <?php
-
+// include 'demo.php';
 /*
 #
 #   REGISTER JS AND CSS
@@ -82,83 +82,124 @@
     // add_action( 'init', lm_custom_post_type_creator('Car Care Videos', 'Holds our car care videos.', true, 7, array( 'title', 'editor', 'thumbnail' ), true, false));
 
     /**
-     * Adds a box to the main column on the Post and Page edit screens.
+ * Adds a box to the main column on the Post and Page edit screens.
+ */
+function lm_add_meta_box() {
+    add_meta_box(
+        'lm_vehicles_capacity',
+        __( 'Capacity', 'lm_textdomain' ),
+        'lm_meta_box_callback1',
+        'vehicles',//$screen
+        'side',
+        'high'
+    );
+
+    add_meta_box(
+        'lm_vehicles_upselltext',
+        __( 'Upsell Text', 'lm_textdomain' ),
+        'lm_meta_box_callback2',
+        'vehicles',//$screen
+        'side',
+        'high'
+    );
+}
+add_action( 'add_meta_boxes', 'lm_add_meta_box' );
+
+/**
+ * Prints the box content.
+ * 
+ * @param WP_Post $post The object for the current post/page.
+ */
+function lm_meta_box_callback1( $post ) {
+
+    // Add an nonce field so we can check for it later.
+    wp_nonce_field( 'lm_meta_box', 'lm_meta_box_nonce' );
+
+    /*
+     * Use get_post_meta() to retrieve an existing value
+     * from the database and use the value for the form.
      */
-    // function lm_add_meta_box() {
-    //     add_meta_box(
-    //         'lm_staff_position',
-    //         __( 'Staff Position', 'lm_textdomain' ),
-    //         'lm_meta_box_callback',
-    //         'staff',//$screen
-    //         'side',
-    //         'high'
-    //     );
+    $value = get_post_meta( $post->ID, '_lm_meta_value_key1', true );
 
-    //     add_meta_box(
-    //         'lm_testimonials_source',
-    //         __( 'Testimonial Source', 'lm_textdomain' ),
-    //         'lm_meta_box_callback',
-    //         'testimonials',//$screen
-    //         'side',
-    //         'high'
-    //     );
-    // }
-    // add_action( 'add_meta_boxes', 'lm_add_meta_box' );
+    echo '<label for="lm_new_field1">';
+    _e( 'Description for this field', 'lm_textdomain' );
+    echo '</label> ';
+    echo '<input type="text" id="lm_new_field1" name="lm_new_field1" value="' . esc_attr( $value ) . '" size="25" />';
+}
+function lm_meta_box_callback2( $post ) {
 
-    /**
-     * Prints the box content.
-     * 
-     * @param WP_Post $post The object for the current post/page.
+    // Add an nonce field so we can check for it later.
+    wp_nonce_field( 'lm_meta_box', 'lm_meta_box_nonce' );
+
+    /*
+     * Use get_post_meta() to retrieve an existing value
+     * from the database and use the value for the form.
      */
-    // function lm_meta_box_callback( $post ) {
+    $value = get_post_meta( $post->ID, '_lm_meta_value_key2', true );
 
-    //     // Add an nonce field so we can check for it later.
-    //     wp_nonce_field( 'lm_meta_box', 'lm_meta_box_nonce' );
+    echo '<label for="lm_new_field2">';
+    _e( 'Description for this field', 'lm_textdomain' );
+    echo '</label> ';
+    echo '<input type="text" id="lm_new_field2" name="lm_new_field2" value="' . esc_attr( $value ) . '" size="25" />';
+}
 
-        
-    //      * Use get_post_meta() to retrieve an existing value
-    //      * from the database and use the value for the form.
-         
-    //     $value = get_post_meta( $post->ID, '_lm_meta_value_key', true );
+/**
+ * When the post is saved, saves our custom data.
+ *
+ * @param int $post_id The ID of the post being saved.
+ */
+function lm_save_meta_box_data( $post_id ) {
 
-    //     echo '<label for="lm_new_field">';
-    //     _e( '', 'lm_textdomain' );
-    //     echo '</label> ';
-    //     echo '<input type="text" id="lm_new_field" name="lm_new_field" value="' . esc_attr( $value ) . '" size="25" />';
-    // }
-
-    /**
-     * When the post is saved, saves our custom data.
-     *
-     * @param int $post_id The ID of the post being saved.
+    /*
+     * We need to verify this came from our screen and with proper authorization,
+     * because the save_post action can be triggered at other times.
      */
-    // function lm_save_meta_box_data( $post_id ) {
 
-    //     /*
-    //      * We need to verify this came from our screen and with proper authorization,
-    //      * because the save_post action can be triggered at other times.
-    //      */
+    // Check if our nonce is set.
+    if ( ! isset( $_POST['lm_meta_box_nonce'] ) ) {
+        return;
+    }
 
-    //     // Check if our nonce is set.
-    //     if ( ! isset( $_POST['lm_meta_box_nonce'] ) ) { return; }
-    //     // Verify that the nonce is valid.
-    //     if ( ! wp_verify_nonce( $_POST['lm_meta_box_nonce'], 'lm_meta_box' ) ) { return; }
-    //     // If this is an autosave, our form has not been submitted, so we don't want to do anything.
-    //     if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) { return; }
-    //     // Check the user's permissions.
-    //     if ( isset( $_POST['post_type'] ) && 'page' == $_POST['post_type'] ) { if ( ! current_user_can( 'edit_page', $post_id ) ) { return; }
-    //     } else { if ( ! current_user_can( 'edit_post', $post_id ) ) { return; } }
+    // Verify that the nonce is valid.
+    if ( ! wp_verify_nonce( $_POST['lm_meta_box_nonce'], 'lm_meta_box' ) ) {
+        return;
+    }
 
-    //     /* OK, it's safe for us to save the data now. */
-    //     // Make sure that it is set.
-    //     if ( ! isset( $_POST['lm_new_field'] ) ) { return;  }
-    //     // Sanitize user input.
-    //     $my_data = sanitize_text_field( $_POST['lm_new_field'] );
-    //     // Update the meta field in the database.
-    //     update_post_meta( $post_id, '_lm_meta_value_key', $my_data );
-    // }
-    // add_action( 'save_post', 'lm_save_meta_box_data' );
+    // If this is an autosave, our form has not been submitted, so we don't want to do anything.
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+        return;
+    }
 
+    // Check the user's permissions.
+    if ( isset( $_POST['post_type'] ) && 'page' == $_POST['post_type'] ) {
+
+        if ( ! current_user_can( 'edit_page', $post_id ) ) {
+            return;
+        }
+
+    } else {
+
+        if ( ! current_user_can( 'edit_post', $post_id ) ) {
+            return;
+        }
+    }
+
+    /* OK, it's safe for us to save the data now. */
+
+    // Make sure that it is set.
+    if ( ! isset( $_POST['lm_new_field1'] ) || ! isset( $_POST['lm_new_field2'] ) ) {
+        return;
+    }
+
+    // Sanitize user input.
+    $my_data1 = sanitize_text_field( $_POST['lm_new_field1'] );
+    $my_data2 = sanitize_text_field( $_POST['lm_new_field2'] );
+
+    // Update the meta field in the database.
+    update_post_meta( $post_id, '_lm_meta_value_key1', $my_data1 );
+    update_post_meta( $post_id, '_lm_meta_value_key2', $my_data2 );
+}
+add_action( 'save_post', 'lm_save_meta_box_data' );
 
 
 /*
