@@ -480,9 +480,11 @@ function lowermedia_jquery_enqueue() {
                             <?php the_post_thumbnail(); ?>
                         </div><!-- .entry-page-image -->
                     <?php endif; ?>
-                    <div class="custom-post-title">
-                        <?php the_title(); ?>
-                    </div><!-- .custom-post-title -->
+                    <div class="post-image-wrap">
+                        <div class="custom-post-title">
+                            <?php the_title(); ?>
+                        </div><!-- .custom-post-title -->
+                    </div>
                 </a>
             </li>
             <?php
