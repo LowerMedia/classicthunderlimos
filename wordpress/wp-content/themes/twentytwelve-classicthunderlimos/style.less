@@ -26,16 +26,25 @@ your theme's stylesheet content.
 
 	.ctl-button {
 		background: transparent;
-		border: 1px solid white;
+		border: 1px solid @child-color-grey;
 		padding: 7.5px;
 		text-align: center;
 		border-radius: 7.5px;
 		font-weight: 100;
+		color: white;
+		text-decoration: none;
+		
+		a { text-decoration: none; }
 	
 		span {
 			color: @child-color-red;
 			margin-left: 10px;
-		};
+			height: 100px;
+		}
+	
+		&:visited { color: white; }
+	
+		&:hover { color: white; }
 	}
 
 	.pete-gradient (@startColor, @endColor) {
@@ -48,7 +57,7 @@ your theme's stylesheet content.
 			background:      linear-gradient(top, @startColor, @endColor);
 	}
 
-	.make-a-reservation-button {
+	/*.make-a-reservation-button {
 		.pete-gradient(@child-color-grey-lite,@child-color-grey);
 		border-radius: 5px;
 		padding: 10px 7.5px;
@@ -61,7 +70,7 @@ your theme's stylesheet content.
 		&:hover {
 			.pete-gradient(@child-color-grey,@child-color-grey-lite);
 		}
-	}
+	}*/
 
 	.comment-content a:visited, .entry-content a:visited { color: black; }
 
@@ -287,7 +296,7 @@ your theme's stylesheet content.
 				background-color: @child-color-red;
 				color: white;
 				padding: 5px 10px;
-				margin: 10px 0;
+				margin: 15px 0;
 				height: 80px;
 		
 					span { 
@@ -331,9 +340,11 @@ your theme's stylesheet content.
 			padding-bottom: 0;
 		}
 
+		.archive-header,
 		.entry-header {
 			margin-bottom: 15px;
 	
+			.archive-title,
 			.entry-title {
 				.pete-gradient(@child-color-grey-lite,@child-color-grey);
 				color: black;
@@ -360,27 +371,33 @@ your theme's stylesheet content.
 			}
 		}
 
-	/*	HOME PAGE STYLES	*/
+		//contact page entry content remove background
+		.page-id-15 .entry-content { background: transparent; }
 
-		.page-template-front-page {
-				.entry-content { 
-					background-color: transparent; 
-					color: @child-color-grey;
-		
-					a { color: white; }
-				}
-	
-				.custom-post-type-list {
+/* CUSTOM POST LIST FUNCTION STYLES */
+
+		.custom-post-type-list {
 					width: 100%;
 					text-align: center;
 		
-					a { text-decoration: none; }
+					a {
+							text-decoration: none;
+							color: white;
+					}
 
 					li {
-							width: 25%;
 							max-width: 200px;
 							list-style: none;
 							margin: 0;
+							position: relative;
+							min-height: 325px;
+  						margin-bottom: 25px;
+		
+							.cpt-button-wrap {
+								position: absolute;
+								bottom: 0;
+								width: 100%;
+							}
 					}
 		
 					.entry-page-image {
@@ -400,6 +417,7 @@ your theme's stylesheet content.
 						> * {
 							display: block;
 							text-align: center;
+							padding: 5px;
 						}
 			
 						img { border-radius: 0; }
@@ -409,17 +427,23 @@ your theme's stylesheet content.
 						color: @child-color-red;
 					}
 				}
-		}
 
 
 /*	CONTACT FORM STYLES		*/
 
 	.gform_wrapper {
+	
+		h3.gform_title {
+			color: white;
+			font-weight: normal;
+			font-style: italic;
+			font-size: 2rem;
+		}
 		
 		.top_label .gfield_label {
 				text-transform: uppercase;
-				font-weight: 100;
 				color: white;
+				font-weight: 100;
 				font-style: italic;
 			}
 	
@@ -437,22 +461,22 @@ your theme's stylesheet content.
 	
 		.gfield_description { display: none; }
 	
-	ul#gform_fields_1,
-	ul#gform_fields_2 {
-		width: 45%;
-		display:inline-block;
-		vertical-align: top;
-		padding: 0 2.5%;
-		
-		li.gfield { 
-			width: 100%;
+		ul#gform_fields_1,
+		ul#gform_fields_2 {
+			width: 45%;
+			display:inline-block;
+			vertical-align: top;
+			padding: 0 2.5%;
 			
-			input { 
+			li.gfield { 
 				width: 100%;
-				min-height: 30px;
+				
+				input { 
+					width: 100%;
+					min-height: 30px;
+				}
 			}
 		}
-	}
 	
 	
 		//#field_1_6 {
@@ -472,4 +496,56 @@ your theme's stylesheet content.
 		
 		  select { width: 55px !important; }
 		}
+	
+		#gform_submit_button_1 {
+			.ctl-button;
+			font-size: 1.75rem;
+			line-height: 1.75rem;
+		
+			&:before,
+			&:after, {
+				display: inline-block;
+				height: 23px;
+				width: 33px;
+				content: " ";
+				background-repeat: no-repeat;
+				background-size: 32px 23px;
+  			vertical-align: top;
+			}
+		
+			&:before {
+				background-image: url('/wp-content/themes/twentytwelve-classicthunderlimos/images/single-wing-icon-left.png');
+				margin-right: 5px;
+			}
+		
+			&:after { 
+				background-image: url('/wp-content/themes/twentytwelve-classicthunderlimos/images/single-wing-icon-right.png');
+				margin-left: 5px;
+			}
+		}
+	
+		.gform_footer {
+		  float: right;
+			width: 30%;
+			margin-top: -60px;
+			margin-right: 25px;
+		}
 	}
+
+
+	/*	HOME PAGE STYLES	*/
+
+		.page-template-front-page {
+				.entry-content { 
+					background-color: transparent; 
+					color: @child-color-grey;
+		
+					a { color: white; }
+				}
+	
+				.custom-post-type-list li {
+						width: 25%;
+						min-height: 375px;
+						margin-bottom: 0;
+				}
+		}
