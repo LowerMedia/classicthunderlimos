@@ -20,9 +20,23 @@ your theme's stylesheet content.
 	
 	@child-background-color: black;
 	
-	@child-header-image:url('/wp-content/themes/classicthunderlimos/images/classic-thunder-limousine-iowa-luxury-transport-coach.png');
+	@child-header-image:url('/wp-content/themes/twentytwelve-classicthunderlimos/images/classic-thunder-limousine-iowa-luxury-transport-coach.png');
 
 /* MIXINS */
+
+	.ctl-button {
+		background: transparent;
+		border: 1px solid white;
+		padding: 7.5px;
+		text-align: center;
+		border-radius: 7.5px;
+		font-weight: 100;
+	
+		span {
+			color: @child-color-red;
+			margin-left: 10px;
+		};
+	}
 
 	.pete-gradient (@startColor, @endColor) {
 			background-color: @startColor;
@@ -53,6 +67,7 @@ your theme's stylesheet content.
 
 
 /* GENERAL */
+
 	body { 
 		background-color: @child-color-black-lite;
 		font-family: Roboto, Arial, sans-serif;
@@ -356,14 +371,105 @@ your theme's stylesheet content.
 				}
 	
 				.custom-post-type-list {
-					display: flex;
-					justify-content: space-between;
+					width: 100%;
+					text-align: center;
+		
+					a { text-decoration: none; }
 
 					li {
-							max-width: 20%;
+							width: 25%;
+							max-width: 200px;
+							list-style: none;
+							margin: 0;
 					}
-					.entry-page-image img {
-						max-width: 100%;
+		
+					.entry-page-image {
+							float: none; 
+							width: 100%; 				
+			
+							img {
+									max-width: 100%;
+							}
+					}
+		
+					.post-image-wrap {
+						background-color: @child-color-grey;
+						padding: 5px 10px;
+						margin-bottom: 25px;
+			
+						> * {
+							display: block;
+							text-align: center;
+						}
+			
+						img { border-radius: 0; }
+					}
+		
+					.custom-post-title {
+						color: @child-color-red;
 					}
 				}
 		}
+
+
+/*	CONTACT FORM STYLES		*/
+
+	.gform_wrapper {
+		
+		.top_label .gfield_label {
+				text-transform: uppercase;
+				font-weight: 100;
+				color: white;
+				font-style: italic;
+			}
+	
+		input[type=email],
+		input[type=number],
+		input[type=password],
+		input[type=tel],
+		input[type=text],
+		input[type=url],
+		textarea.medium {
+				background: @child-color-grey;
+				border-radius: 0;
+				border: none;
+			}
+	
+		.gfield_description { display: none; }
+	
+	ul#gform_fields_1,
+	ul#gform_fields_2 {
+		width: 45%;
+		display:inline-block;
+		vertical-align: top;
+		padding: 0 2.5%;
+		
+		li.gfield { 
+			width: 100%;
+			
+			input { 
+				width: 100%;
+				min-height: 30px;
+			}
+		}
+	}
+	
+	
+		//#field_1_6 {
+		//	
+		//	.ginput_container,
+		//	.gfield_label { display: inline-block; }
+		//	.ginput_container { margin-left: 10px; }
+		//
+		//}
+	
+		ul#gform_fields_1 #field_1_12,
+		ul#gform_fields_1 #field_1_13 {
+			width: 200px;
+			float: left;
+			display: inline-block;
+			clear: none;
+		
+		  select { width: 55px !important; }
+		}
+	}
