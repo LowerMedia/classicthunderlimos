@@ -60,3 +60,13 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 			.main-navigation li {
 					flex-grow: 1;
 				}
+
+
+			.page-template-front-page .custom-post-type-list {				
+					display: -webkit-box;
+					display: -moz-box;
+					display: -ms-flexbox;
+					display: -webkit-flex;
+					display: flex;
+					justify-content: space-between;
+				}
