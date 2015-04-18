@@ -522,11 +522,28 @@ function lowermedia_jquery_enqueue() {
                         </div><!-- .entry-page-image -->
                     <?php endif; ?>
                     <div class="post-image-wrap">
+
                         <div class="custom-post-title">
                             <?php the_title(); ?>
                         </div><!-- .custom-post-title -->
+
+                        <?php if ( get_post_meta( get_the_ID(), '_lm_meta_value_key2', true ) ) : ?>
+                            <div class="custom-post-capacity">
+                                <?php echo get_post_meta( get_the_ID(), '_lm_meta_value_key2', true ); ?>                            
+                            </div><!-- .custom-post-capacity -->
+                        <?php endif; ?>
+
+                        <?php if ( get_post_meta( get_the_ID(), '_lm_meta_value_key1', true ) ) : ?>
+                            <div class="custom-post-upselltext">
+                                <?php echo get_post_meta( get_the_ID(), '_lm_meta_value_key1', true ); ?>                            
+                            </div><!-- .custom-post-upselltext -->
+                        <?php endif; ?>
+
+                        
                     </div>
                 </a>
+                <a class="ctl-button ctl-viewdetails-button" href="<?php the_permalink() ?>" />View Details <span>>></span></a>
+                <a class="ctl-button ctl-inquire-button" href="/contact/" />Inquire</a>
             </li>
             <?php
           endwhile;
