@@ -28,7 +28,7 @@ get_header(); ?>
 			</header><!-- .archive-header -->
 
 			<div class="fleet-information-output">
-				<?php lowermedia_return_custom_posts('vehicles', 4); ?>
+				<?php lowermedia_return_custom_posts('vehicles', 'all'); ?>
 			</div>
 		<?php endif; ?>
 		</div><!-- #content -->
