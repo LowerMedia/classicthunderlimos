@@ -497,18 +497,21 @@ function lowermedia_jquery_enqueue() {
 #
 #   RETURN CUSTOM POST TYPES
 #
-#
+#   return all if $how_many equals 'all'
 #
 */
 
     function lowermedia_return_custom_posts($post_type, $how_many) {
         ?><ul class='custom-post-type-list'><?php
+
+        if( $how_many !='all' ){ $posts_per_page = $how_many; }
+
         $args=array(
           'post_type' => $post_type,
           'post_status' => 'publish',
-          'posts_per_page' => $how_many,
+          'posts_per_page' => $posts_per_page,
           'caller_get_posts'=> 1
-          );
+        );
 
         $my_query = null;
         $my_query = new WP_Query($args);
@@ -542,14 +545,25 @@ function lowermedia_jquery_enqueue() {
                         
                     </div>
                 </a>
-                <a class="ctl-button ctl-viewdetails-button" href="<?php the_permalink() ?>" />View Details <span>>></span></a>
-                <a class="ctl-button ctl-inquire-button" href="/contact/" />Inquire</a>
+                <div class="cpt-button-wrap">
+                    <a class="ctl-button ctl-viewdetails-button" href="<?php the_permalink() ?>" />View Details <span>>></span></a>
+                    <a class="ctl-button ctl-inquire-button" href="/contact/" />Inquire</a>
+                </div>
             </li>
             <?php
           endwhile;
         endif;
         wp_reset_query();  // Restore global post data stomped by the_post().
         ?></ul><?php
+    }
+
+
+
+
+    add_filter("gform_submit_button", "form_submit_button", 10, 2);
+    function form_submit_button($button, $form){
+        $button_title = $form['button']['text'];
+        return "<button class='button' id='gform_submit_button_{$form["id"]}'>".$button_title."</button>";
     }
 
 /*
