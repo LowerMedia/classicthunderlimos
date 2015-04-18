@@ -50,7 +50,7 @@
 				CALL&nbsp;&nbsp;<?php echo do_shortcode('[phonenumber]');?>
 			</div>
 			<div id="header-reservation-holder" class="header-reservation-holder">
-				<a class="make-a-reservation-button" href="">Make A Reservation</a>
+				<a class="make-a-reservation-button ctl-button" href="">Make A Reservation</a>
 			</div>
 			<nav id="site-navigation" class="main-navigation" role="navigation">
 				<button class="menu-toggle"><?php _e( 'Menu', 'twentytwelve' ); ?></button>
