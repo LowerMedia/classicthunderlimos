@@ -1,4 +1,6 @@
 /* VARIABLES */
+/* VARIABLES */
+/* MIXINS */
 /* MIXINS */
 .ctl-button {
   background: transparent;
@@ -42,6 +44,7 @@
 .entry-content a:visited {
   color: black;
 }
+/* BASE */
 /* GENERAL */
 body {
   background-color: #252525;
@@ -491,3 +494,7 @@ footer[role=contentinfo] .footer-contact-info a {
   min-height: 375px;
   margin-bottom: 0;
 }
+/* MOBILE */
+/* PHONE UP */
+/* TABLET + */
+/* TABLETS UP */
