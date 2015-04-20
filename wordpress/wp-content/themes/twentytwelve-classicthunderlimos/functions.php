@@ -44,7 +44,7 @@ function lowermedia_scripts() {
     wp_enqueue_style( 'classicthunderlimos-css', get_stylesheet_directory_uri()."/css/classicthunderlimos.css" );
 }
 
-add_action( 'wp_enqueue_scripts', 'lowermedia_scripts' );
+add_action( 'wp_enqueue_scripts', 'lowermedia_scripts', 15 );
 
 
 /*
