@@ -37,6 +37,16 @@
     // add_action( 'wp_enqueue_scripts', 'lowermedia_enqueue_parent_style' );
 
 
+/**
+ * Enqueue scripts and styles
+ */
+function lowermedia_scripts() {
+    wp_enqueue_style( 'classicthunderlimos-css', get_stylesheet_directory_uri()."/css/classicthunderlimos.css" );
+}
+
+add_action( 'wp_enqueue_scripts', 'lowermedia_scripts' );
+
+
 /*
 #
 #   ADD CUSTOM CONTENT TYPES 
