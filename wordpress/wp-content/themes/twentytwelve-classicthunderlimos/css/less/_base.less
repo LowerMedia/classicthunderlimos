@@ -1,5 +1,5 @@
 
-/* GENERAL */
+/* -------------------------------------- GENERAL -------------------------------------- */
 
 	body { 
 		background-color: @child-color-black-lite;
@@ -35,7 +35,7 @@
 
 	#primary, #secondary  { margin-top: 0; }
 	
-/* SHELL */
+/* -------------------------------------- SHELL -------------------------------------- */
 
 	/* HEADER */
 	
@@ -53,6 +53,8 @@
 		.header-reservation-holder {
 			text-align: right;
 		}
+
+		.site-header { padding: 0; }
 	
 	/* NAVIGATION */
 	
@@ -115,6 +117,7 @@
 				}
 	
 				.sub-menu {
+					display: none;
 					margin-left: -13px;
 					margin-top: 10px;
 		
@@ -138,6 +141,26 @@
 							color: @child-color-red;
 						}
 					}
+				}
+			}
+
+			.menu-toggle { width: 100%; }
+
+			ul.nav-menu.toggled-on {
+				width: 100%;
+
+				li {
+					width: 100%;
+					background-color: @child-color-grey;
+					text-align:center;
+					padding: 10px 0;
+
+					&:hover {
+						background-color: @child-color-red;
+						a { color: white; }
+					}
+
+					a { text-decoration: none; }
 				}
 			}
 		}
@@ -178,6 +201,7 @@
 				max-width: 960px;
 				width: 100%;
 				margin: auto;
+				text-align: center;
 			}
 	
 			.footer-contact-info {
@@ -253,7 +277,8 @@
 		}
 
 
-	/*	SHARED PAGE STYLES	*/
+/* --------------------------------------	SHARED PAGE STYLES	-------------------------------------- */
+
 		@media screen and (min-width: 600px) {
 				.site-content {	width: 72% }
 		}
@@ -298,7 +323,7 @@
 		//contact page entry content remove background
 		.page-id-15 .entry-content { background: transparent; }
 
-/* CUSTOM POST LIST FUNCTION STYLES */
+/* -------------------------------------- CUSTOM POST LIST FUNCTION STYLES -------------------------------------- */
 
 		.custom-post-type-list {
 					width: 100%;
@@ -353,7 +378,7 @@
 				}
 
 
-/*	CONTACT FORM STYLES		*/
+/* --------------------------------------	CONTACT FORM STYLES	 --------------------------------------	*/
 
 	.gform_wrapper {
 	
@@ -428,13 +453,13 @@
 		
 			&:before,
 			&:after, {
-				display: inline-block;
+				display: none;
 				height: 23px;
 				width: 33px;
 				content: " ";
 				background-repeat: no-repeat;
 				background-size: 32px 23px;
-  			vertical-align: top;
+  				vertical-align: top;
 			}
 		
 			&:before {
@@ -456,6 +481,7 @@
 		}
 	}
 
+/* --------------------------------------	PAGE SPECIFIC STYLES	 --------------------------------------	*/
 
 	/*	HOME PAGE STYLES	*/
 
@@ -468,8 +494,10 @@
 				}
 	
 				.custom-post-type-list li {
-						width: 25%;
+						width: 95%;
+						max-width: 200px;
+						margin: 0 auto;
 						min-height: 375px;
-						margin-bottom: 0;
+						// margin-bottom: 0;
 				}
 		}

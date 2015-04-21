@@ -1,1 +1,85 @@
 /* TABLETS UP */
+
+	/* because jetpack won't accept justify-content space-between */
+
+		.main-navigation div.nav-menu>ul,
+		.main-navigation ul.nav-menu,
+		.site-info,
+		.custom-post-type-list,
+		.custom-post-type-list li .cpt-button-wrap {
+				display: -webkit-box;
+				display: -moz-box;
+				display: -ms-flexbox;
+				display: -webkit-flex;
+				display: flex;
+			}
+
+
+		.main-navigation div.nav-menu>ul,
+		.main-navigation ul.nav-menu,
+		.site-info,
+		.custom-post-type-list,
+		.custom-post-type-list li .cpt-button-wrap {
+				justify-content: space-between;
+			}
+			
+		.main-navigation li {
+				flex-grow: 1;
+			}
+
+
+		.custom-post-type-list {
+				flex-wrap: wrap;
+			}
+
+	/* -------------------------------------- GENERAL -------------------------------------- */
+	/* -------------------------------------- SHELL -------------------------------------- */
+
+		/* HEADER */
+
+			.site-header { padding: 1.714285714rem 0; }
+
+		/* MAIN NAV */
+
+			.main-navigation {
+			
+				li {
+		
+					.sub-menu { display: block; }
+				}
+			}
+
+		/* FOOTER */
+	
+			footer[role=contentinfo] {
+		
+				.site-info {
+					text-align: left;
+				}
+
+			}
+
+	/* --------------------------------------	PLUGIN STYLES	 --------------------------------------	*/
+
+	.gform_wrapper {
+		
+		#gform_submit_button_1 {
+		
+			&:before,
+			&:after, {
+				display: inline-block;
+			}
+		}
+	}
+
+	/* -------------------------------------- PAGE SPECIFIC STYLES -------------------------------------- */
+		/*	HOME PAGE STYLES	*/
+
+		.page-template-front-page {
+	
+				.custom-post-type-list li {
+						width: 25%;
+						min-height: 375px;
+						margin-bottom: 0;
+				}
+		}
