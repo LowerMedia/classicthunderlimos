@@ -32,6 +32,10 @@
 				flex-wrap: wrap;
 			}
 
+		.archive .custom-post-type-list li {
+				 margin: 0 0 25px;
+			}
+
 	/* -------------------------------------- GENERAL -------------------------------------- */
 	/* -------------------------------------- SHELL -------------------------------------- */
 
@@ -44,8 +48,48 @@
 			.main-navigation {
 			
 				li {
+
+					&.menu-item-has-children:hover > a:before {
+						display: block;
+						position: absolute;
+						top: 21px;
+						left: 40%;
+						margin-left: 0;
+						content: '';
+						width: 0;
+						height: 0;
+						border-bottom: solid 10px @child-color-red;
+						border-left: solid 10px transparent;
+						border-right: solid 10px transparent;
+						z-index: 999999;
+					}
+
+					.sub-menu {
+						display: block;
+						margin-left: -13px;
+						margin-top: 10px;
 		
-					.sub-menu { display: block; }
+						li {
+							text-align: center;
+							margin: 0;
+							padding: 0;
+							border-right: none;
+							&:first-of-type,
+							&:last-of-type { text-align: center; }
+				
+							a, a:hover { 
+								background-color: @child-color-red;
+								color: white;
+								font-size: 1rem;
+								line-height: 1rem;
+							}
+				
+							a:hover { 
+								background-color: white;
+								color: @child-color-red;
+							}
+						}
+					}
 				}
 			}
 

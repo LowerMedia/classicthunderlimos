@@ -100,48 +100,7 @@
 					line-height: 1.5rem;
 				}
 	
-				&.menu-item-has-children:hover > a:before {
-							display: block;
-						  position: absolute;
-							top: 21px;
-							left: 40%;
-							margin-left: 0;
-							content: '';
-							width: 0;
-							height: 0;
-							border-bottom: solid 10px @child-color-red;
-							border-left: solid 10px transparent;
-							border-right: solid 10px transparent;
-							z-index: 999999;
-							display: none;
-				}
-	
-				.sub-menu {
-					display: none;
-					margin-left: -13px;
-					margin-top: 10px;
-		
-					li {
-						text-align: center;
-						margin: 0;
-						padding: 0;
-						border-right: none;
-						&:first-of-type,
-						&:last-of-type { text-align: center; }
-			
-						a, a:hover { 
-							background-color: @child-color-red;
-							color: white;
-							font-size: 1rem;
-							line-height: 1rem;
-						}
-			
-						a:hover { 
-							background-color: white;
-							color: @child-color-red;
-						}
-					}
-				}
+				.sub-menu { display: none; }
 			}
 
 			.menu-toggle { width: 100%; }
@@ -326,56 +285,56 @@
 /* -------------------------------------- CUSTOM POST LIST FUNCTION STYLES -------------------------------------- */
 
 		.custom-post-type-list {
-					width: 100%;
-					text-align: center;
-		
-					a {
-							text-decoration: none;
-							color: white;
-					}
+			width: 100%;
+			text-align: center;
 
-					li {
-							max-width: 200px;
-							list-style: none;
-							margin: 0;
-							position: relative;
-							min-height: 325px;
-  						margin-bottom: 25px;
-		
-							.cpt-button-wrap {
-								position: absolute;
-								bottom: 0;
-								width: 100%;
-							}
-					}
-		
-					.entry-page-image {
-							float: none; 
-							width: 100%; 				
-			
-							img {
-									max-width: 100%;
-							}
-					}
-		
-					.post-image-wrap {
-						background-color: @child-color-grey;
-						padding: 5px 10px;
-						margin-bottom: 25px;
-			
-						> * {
-							display: block;
-							text-align: center;
-							padding: 5px;
-						}
-			
-						img { border-radius: 0; }
-					}
-		
-					.custom-post-title {
-						color: @child-color-red;
-					}
+			a {
+					text-decoration: none;
+					color: white;
+			}
+
+			li {
+				max-width: 200px;
+				list-style: none;
+				margin: 0 auto;
+				position: relative;
+				min-height: 325px;
+					margin-bottom: 25px;
+
+				.cpt-button-wrap {
+					position: absolute;
+					bottom: 0;
+					width: 100%;
 				}
+			}
+
+			.entry-page-image {
+					float: none; 
+					width: 100%; 				
+	
+					img {
+							max-width: 100%;
+					}
+			}
+
+			.post-image-wrap {
+				background-color: @child-color-grey;
+				padding: 5px 10px;
+				margin-bottom: 25px;
+	
+				> * {
+					display: block;
+					text-align: center;
+					padding: 5px;
+				}
+	
+				img { border-radius: 0; }
+			}
+
+			.custom-post-title {
+				color: @child-color-red;
+			}
+		}
 
 
 /* --------------------------------------	CONTACT FORM STYLES	 --------------------------------------	*/
@@ -495,8 +454,8 @@
 	
 				.custom-post-type-list li {
 						width: 95%;
-						max-width: 200px;
-						margin: 0 auto;
+						//max-width: 200px;
+						//margin: 0 auto;
 						min-height: 375px;
 						// margin-bottom: 0;
 				}
